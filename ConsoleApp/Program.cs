@@ -1,98 +1,87 @@
-﻿//wywołanie funkcji statycznej z klasy Console z parametrem typu string
-using System.Xml.Linq;
+﻿using ConsoleApp;
 
-Console.WriteLine("Hello, World!");
-
-Console.Write("Hello, World!"); //WriteLine stawia znak nowej linii na koniec (enter), a funkcja Write - nie
-
-/* wywołanie funkcji statycznej z klasy Console,
-   która nie przyjmuje parametrów */
-Console.WriteLine();
-
-//deklaracja zmiennej o typie string (ciąg/łańcuch znaków) i nazwie helloVariable
-string helloVariable;
-
-//nie możemy używać niezainicjalizowanej zmiennej
-//Console.WriteLine(helloVariable);
-
-//inicjalizacja zmiennej - pierwsze przypisanie wartości
-helloVariable = "Hello";
-
-//przekazujemy naszą zmienną jako parametr funkcji
-Console.WriteLine(helloVariable);
-Console.WriteLine(helloVariable);
-
-//deklaracja z inicjalizacją
-string target = "World";
-Console.WriteLine(target);
-
-//zmiana wartości - każde kolejne przypisanie wartości
-helloVariable = "Hi";
-Console.WriteLine(helloVariable);
-
-string output;
-//łączenie stringów za pomocą operatora +
-output = helloVariable + ", " + target + "!"; // łączenie stringów to "wyprodukowanie" nowego stringa na podstawie połączenia innych
-//output = string.Concat(helloVariable, ", ", target, "!"); //operator + jest odpowiednikiem takiego wywołania funkcji łączenia stringów
-
-Console.WriteLine(output);
-
-string myFormat = "{0}, {1}!"; //wartości w nazwiasach oznaczają indeks parametru, który ma być wstawiony w to miejsce
-output = string.Format(myFormat, helloVariable, target); //łączenie stringów za pomocą funkcji string.Fomat
-
-Console.WriteLine(output);
-
-Console.WriteLine("Podaj imię:");
-target = Console.ReadLine();
-
-output = $"{helloVariable}, {target}!"; //łączenie wykorzystujące interpolację (string interpolowany)
-
-Console.WriteLine(output);
-
-//Lenth - właściwość (brak nawiasów odróżnia ją od metody) - przetrzymuje dane o długości stringa
-output = $"Długość dotychczasowej zawartości zmiennej \"output\" to \t {output.Length}"; //ukośnik opadający aktywuje znak specjalny/zastrzeżony
-Console.WriteLine(output);
-
-output = $"Długość dotychczasowej zawartości zmiennej output to {output.Count()}";
-Console.WriteLine(output);
-
-//stringów nie możemy edytować, żeby zmienić wartość należy wytworzyć nowego stringa i przypisać pod zmienną
-//zastąpienie części znaków - czułe na wielkość liter
-output = output.Replace("dotychczasowej", "tymczasowej");
-Console.WriteLine(output);
-
-//zastąpienie części znaków - niezależne od wielkości liter
-output = output.Replace("Tymczasowej", "dotychczasowej", StringComparison.OrdinalIgnoreCase);
-Console.WriteLine(output);
-
-//wycinanie "podstringów"
-output = output.Substring(3, output.Length - 3 - 6); //obliczamy ile zanków usunąć z końca
-Console.WriteLine(output);
-
-string someString = "ala ma kota";
-string anotherString = "Ala ma kota";
-
-bool isEqual;
-
-//= operator przypisania
-// == - operator porównania, dla string działa tak samo jak Equals
-isEqual = someString == anotherString;
-Console.WriteLine(isEqual);
-
-//Equals porównuje czy obiekty są tym samym obiektem. Produktem metody jest zmienna bool (prawda/fałsz)
-isEqual = someString.Equals(anotherString);
-Console.WriteLine(isEqual);
-
-//porównanie z ignorowaniem wielkości znaków
-isEqual = someString.Equals(anotherString, StringComparison.OrdinalIgnoreCase);
-Console.WriteLine(isEqual);
+/*StringsDemo myStringsDemo = new StringsDemo();
+myStringsDemo.Run();*/
 
 
-string name = Console.ReadLine();
-Console.WriteLine($"*{name}*");
-Console.WriteLine($"*{name.Trim()}*");
-Console.WriteLine($"*{name.TrimEnd()}*");
-Console.WriteLine($"*{name.TrimStart()}*");
+int a = 11;
+int b = 4;
 
-//usuwanie wskazanego znaku przez sparametryzowanie metody wskazanym znakiem
-Console.WriteLine($"*{name.Trim().Trim('ł')}*");
+int c = a + b;
+Console.WriteLine($"{a} + {b} = {c}");
+c = a - b;
+Console.WriteLine($"{a} - {b} = {c}");
+c = a * b;
+Console.WriteLine($"{a} * {b} = {c}");
+c = a / b; // część dziesiętna jest ucięta (nie zaokrąglana!)
+Console.WriteLine($"{a} / {b} = {c}");
+c = a % b; //reszta z dzielenia
+Console.WriteLine($"{a} % {b} = {c}");
+
+
+float aa = 11;
+float bb = 4.0f;
+
+float cc = aa + bb;
+Console.WriteLine($"{aa} + {bb} = {cc}");
+cc = aa - bb;
+Console.WriteLine($"{aa} - {bb} = {cc}");
+cc = aa * bb;
+Console.WriteLine($"{aa} * {bb} = {cc}");
+cc = aa / bb;
+Console.WriteLine($"{aa} / {bb} = {cc}");
+
+//aby wynik był poprawny przy dzieleniu dwóch intów należy jako pierwszą operację "przekształcić" int na float
+//możemy to zrobić poprzez wykonanie jako pierwszą operację mnożenia przez typ o większej prezycji
+cc = 1f * a / b;
+Console.WriteLine($"{a} / {b} = {cc}");
+
+//lub poprzez rzutowanie (czyli potraktowanie jednego typu jako inny (podany w nawiasie))
+cc = (float)a / b;
+Console.WriteLine($"{a} / {b} = {cc}");
+
+//kolejność działań zgodna z zasadami matematyki
+c = a + a * a;
+Console.WriteLine($"{a} + {a} * {a} = {c}");
+c = (a + a) * a;
+Console.WriteLine($"({a} + {a}) * {a} = {c}");
+
+
+
+Console.WriteLine($"byte min:{byte.MinValue} max:{byte.MaxValue}");
+Console.WriteLine($"short min:{short.MinValue} max:{short.MaxValue}");
+Console.WriteLine($"int min:{int.MinValue} max:{int.MaxValue}");
+Console.WriteLine($"long min:{long.MinValue} max:{long.MaxValue}");
+
+Console.WriteLine($"float min:{float.MinValue} max:{float.MaxValue}");
+Console.WriteLine($"double min:{double.MinValue} max:{double.MaxValue}");
+Console.WriteLine($"decimal min:{decimal.MinValue} max:{decimal.MaxValue}");
+
+Console.WriteLine(5 / 3.3f); //f - float
+Console.WriteLine(5 / 3.3d); //d - double
+Console.WriteLine(5 / 3.3m); //m - decimal
+
+//Math to klasa zawierające funkcje przydatne w obliczeniach matematycznych
+//domyślne zachowanie funkcji zaokrąglającej powoduje zaokrąglanie do wartości parzystej
+Console.WriteLine( Math.Round(2.5/*, MidpointRounding.ToEven*/) );
+Console.WriteLine( Math.Round(3.5) );
+
+Console.WriteLine(Math.Round(2.5, MidpointRounding.AwayFromZero));
+Console.WriteLine(Math.Round(3.5, MidpointRounding.AwayFromZero));
+
+
+
+//formatowanie liczb
+float number = 9;
+Console.WriteLine(number.ToString("0#")); //09
+Console.WriteLine(19.ToString("0#")); //19
+
+Console.WriteLine($"{number:0#}"); //09
+Console.WriteLine($"{19:0#}"); //09
+
+number = 1f / 3f;
+Console.WriteLine($"{number:0.##}");
+Console.WriteLine($"{number:f2}");
+
+Console.WriteLine($"{1:0.00}");
+Console.WriteLine($"{1:f2}");
