@@ -1,4 +1,5 @@
 ﻿using ConsoleApp;
+using System.Globalization;
 
 /*StringsDemo myStringsDemo = new StringsDemo();
 myStringsDemo.Run();*/
@@ -85,3 +86,21 @@ Console.WriteLine($"{number:f2}");
 
 Console.WriteLine($"{1:0.00}");
 Console.WriteLine($"{1:f2}");
+
+
+
+Console.WriteLine("Podaj pierwszy bok prostokąta:");
+string input1 = Console.ReadLine();
+Console.WriteLine("Podaj drugi bok prostokąta:");
+string input2 = Console.ReadLine();
+
+//parsowanie/konwersja string na int
+/*int sideA = int.Parse(input1);
+int sideB = int.Parse(input2);*/
+
+//parsowanie/konwersja string na float
+float sideA = float.Parse(input1);
+float sideB = float.Parse(input2);
+
+float area = sideA * sideB;
+Console.WriteLine($"Pole prostokąta to {area}");
