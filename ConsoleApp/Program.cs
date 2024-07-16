@@ -1,5 +1,4 @@
 ﻿using ConsoleApp;
-using Microsoft.VisualBasic;
 
 
 Demos demos = new Demos();
@@ -11,43 +10,51 @@ Demos demos = new Demos();
 //Console.ReadLine();
 
 
-//tworzymy nową listę. Lista po inicjalizacji jest pusta.
-List<string> listOfStrings = new List<string>();
-//List<string> listOfStrings = new();
-//List<string> listOfStrings = [];
 
-Console.WriteLine(listOfStrings.Count);
+Console.WriteLine("Podaj bok kwadratu:");
+string input = Console.ReadLine();
 
-//dodajemy nowy element do listy, rozmiar tablicy się zwiększa
-listOfStrings.Add("!");
-listOfStrings.Add("ala");
-listOfStrings.Add("kota");
-
-Console.WriteLine(listOfStrings.Count);
+int side = int.Parse(input);
 
 
-//stawiamy element na konkretny indeks listy - pozostałe ementy przesuwają się
-listOfStrings.Insert(2, "ma");
+//if sprawdza warunek w nawiasie i jeśli jest on prawdziwy, to wykonuje się blok kodu pod nim
+if (side < 0)
+{
+    Console.WriteLine("Nie mogę policzyć obwodu z ujemnego rozmiaru");
+}
+// jeśli poprzedni warunek nie jest spełniony, to sprawdzany jest kolejny if
+// else if - może występować wielokrotne
+else if (side > 0)
+{
+    Console.WriteLine($"Kwadrat ma obwód {side * 4}");
+}
+//else - wykonuje blok kodu w każdym innym przypadku
+else /*if(side == 0)*/
+{
+    Console.WriteLine("Kwadrat nie instnieje");
+}
 
+//jeżeli używany else, to tylko jeden blok kodu zostanie wykonany i sprawdzanie warunków zakończy się w przypadku wejścia w któryś z bloków
+//jeżeli nie używany else, to każdy if będzie traktowany osobno i warunek będzie sprzwdzany niezależnie
+//wniosek else jest też łącznikiem między kolejnymi if'ami
 
-listOfStrings.Add("!");
-listOfStrings.Add("!");
+if (side != 0)
+{
+    Console.WriteLine("Bok jest różny od 0");
+}
+if(side == 0)
+{
+    Console.WriteLine("Bok jest równy 0");
+}
 
-//usuwamy element pod indeksem 2 - rozmiar listy się zmniejsza
-listOfStrings.RemoveAt(2);
+bool result = side == 0; //== - porównanie
+result = side != 0; //!= - nierówność
+result = !(side == 0); // ! - zaprezeczenie wyrażenia logicznego
+result = side < 0; // < - mniejsze
+result = side > 0; // > - większe
+result = side <= 0; // <= - mniejsze lub równe
+result = side >= 0; // >= - większe lub równe
 
-//usuwamy element wg wartości - jeśli występuję więcej takich elementów, to usuwany jest pierwszy w kolejności
-listOfStrings.Remove("!");
+result = side < 0 || side == 0; // || - logiczne lub (OR)
+result = side > 0 && side <= 10; // && - logiczne i (AND) 
 
-var indexOfExclamantionMark = listOfStrings.IndexOf("!"); //pytamy listę o index wskazanego elementu
-listOfStrings.Insert(indexOfExclamantionMark + 1, "@");
-
-//w listach odwołujemy się do elementów po indeksach (tak jak w tablicach)
-listOfStrings[listOfStrings.Count - 1] = "?";
-
-
-Console.WriteLine(listOfStrings[1]);
-
-//przekształcenie tablicy do listy
-listOfStrings = Console.ReadLine().Split().ToList();
-Console.WriteLine($"Lista ma rozmiar: {listOfStrings.Count}");
