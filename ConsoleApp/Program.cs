@@ -14,23 +14,32 @@ Demos demos = new Demos();
 
 
 
-Console.WriteLine("Napisz coś:");
+
+Console.WriteLine("Podaj liczby rozdzielając je spacją:");
 string input = Console.ReadLine();
 
-string[] words = input.Split();
+List<int> ints = new List<int>();
 
-//foreach zastępuje poniższy sposób iteracji po tablicy
-for (int i = 0; i < words.Length; i++)
+foreach (var item in input.Split())
 {
-    string word = words[i];
-
-    Console.WriteLine(word);
+    ints.Add(int.Parse(item));
 }
 
 
-//foreach - pozwala przejsc po wszystkich elementach tablicy
-foreach (string word in words)
+
+int accumulator = 0;
+int counter = 0;
+for (; counter < ints.Count; counter++)
 {
-    Console.WriteLine(word);
+    int value = ints[counter];
+    if (value % 2 != 0)
+        continue; //przerywa aktualną iterację i kontynuuje pętle (przechodzi do końca ciała)
+
+    //accumulator = accumulator + ints[counter];
+    accumulator += ints[counter];
+    if (accumulator >= 100)
+        break; //przerywa całą pętlę
 }
+
+Console.WriteLine($"Wykorzystano {counter + 1} wartości by osiągnąć wynik 100");
 

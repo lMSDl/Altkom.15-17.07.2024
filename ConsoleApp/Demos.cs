@@ -652,5 +652,28 @@
                 Console.WriteLine(splittedInput[i]);
             }
         }
+
+        public void Foreach()
+        {
+            Console.WriteLine("Napisz coś:");
+            string input = Console.ReadLine();
+
+            string[] words = input.Split();
+
+            //foreach zastępuje poniższy sposób iteracji po tablicy
+            for (int i = 0; i < words.Length; i++)
+            {
+                string word = words[i];
+
+                Console.WriteLine(word);
+            }
+
+
+            //foreach - pozwala przejsc po wszystkich elementach tablicy
+            foreach (string word in words)
+            {
+                Console.WriteLine(word);
+            }
+        }
     }
 }
