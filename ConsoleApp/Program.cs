@@ -7,88 +7,59 @@ Demos demos = new Demos();
 //demos.Numbers();
 //demos.Arrays();
 //demos.IfElse();
+//demos.WhileDoWhile();
 
 //Console.ReadLine();
 
+//I - inicjalizacja pętli - wykonuje się tylko raz na początku
+//II - warunek kontynukacji pętli - wykonuje się przed każdym wykonaniem ciała
+//III - ciało pętli
+//IV - akcja po wykonaniu ciała - najczęściej inkrementacja licznika
 
-bool stop = false;
+//for(I; II; IV )
+//   { III; }
 
-//while - pętla która trwa gdy jej parametr jest true, parametr jest sprawdzany przed każdym wejściem do pętli
-// jeśli przy pierwszym wejściu parametr będzie false, to pętla się nigdy nie wykona
-while (!stop)
-//while(true) //= pętla nieskończona
+for(int i = 0; i < 5; i++ /*i = i + 1*/)
 {
-    Console.Clear();
-    Console.WriteLine("1. Stringi; 2. Liczby; 3. Formatowanie");
-    Console.WriteLine("Co chcesz zrobić?");
-    string input = Console.ReadLine();
-
-    switch(input)
-    {
-        case "1":
-            demos.Strings();
-            break;
-        case "2":
-            demos.Numbers();
-            break;
-        case "3":
-            demos.NumbersFormatting();
-            break;
-        case "exit":
-
-            stop = true;
-            break;
-        default:
-            Console.WriteLine("Brak wskazanej opcji");
-            break; //break wewnątrz switcha nie "propaguje" do while, więc nie przerywa pętli
-    }
-
-    //if (stop)
-    //    break; //break przerywa pętlę
+    Console.WriteLine(i);
 }
 
 
-bool finish;
-
-//do-while - sprawdza warunek po wykonaniu ciała - zapewnia, że zostanie ono wykonane co najmniej raz
-//pozwala to wyeliminować inicjalizację zminnych przed wejściem do pętli
-do
+//pętla nieskończona - odpowiednik while(true)
+/*for (; ; )
 {
-    Console.WriteLine("Co chcesz zrobić?");
-    string operation = Console.ReadLine();
-    switch (operation)
-    {
-        case "exit":
-            finish = true;
-            break;
-        default:
-            finish = false;
-            Console.WriteLine(operation);
-            break;
-    }
-} while (!finish);
+    Console.WriteLine("*");
+}*/
+
+Console.WriteLine("---");
 
 
-
-
-int userValue1 = RequestForInt();
-
-Console.WriteLine($"{userValue1} to poprawna wartość!");
-
-int userValue2 = RequestForInt();
-
-Console.WriteLine($"{userValue2} to poprawna wartość!");
-
-int RequestForInt()
+int value = 5;
+for(; value > 0; value--)
 {
-    bool success;
-    int userValue;
-    string userInput;
-    do
-    {
-        Console.WriteLine("Podaj cyfrę:");
-        userInput = Console.ReadLine();
-    } while (!int.TryParse(userInput, out userValue));
+    Console.WriteLine(  value );
+}
 
-    return userValue; //return służy do przerwania funkcji i zwrócenia wskazanej wartości jako wynik działania funkcji
+Console.WriteLine("---");
+
+value = 0;
+for (; value < 5;)
+{
+    Console.WriteLine(++value);
+}
+
+Console.WriteLine("---");
+
+value = 0;
+for (; value < 5;)
+{
+    Console.WriteLine(value++);
+}
+
+string input = Console.ReadLine();
+string[] splittedInput = input.Split();
+
+for (int i = 0; i < splittedInput.Length; i++)
+{
+    Console.WriteLine(splittedInput[i]);
 }

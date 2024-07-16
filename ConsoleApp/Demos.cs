@@ -510,5 +510,91 @@
                 Console.WriteLine($"{valueA} {operation} {valueB} = {result}");
             }
         }
+
+        public void WhileDoWhile()
+        {
+            bool stop = false;
+
+            //while - pętla która trwa gdy jej parametr jest true, parametr jest sprawdzany przed każdym wejściem do pętli
+            // jeśli przy pierwszym wejściu parametr będzie false, to pętla się nigdy nie wykona
+            while (!stop)
+            //while(true) //= pętla nieskończona
+            {
+                Console.Clear();
+                Console.WriteLine("1. Stringi; 2. Liczby; 3. Formatowanie");
+                Console.WriteLine("Co chcesz zrobić?");
+                string input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "1":
+                        Strings();
+                        break;
+                    case "2":
+                        Numbers();
+                        break;
+                    case "3":
+                        NumbersFormatting();
+                        break;
+                    case "exit":
+
+                        stop = true;
+                        break;
+                    default:
+                        Console.WriteLine("Brak wskazanej opcji");
+                        break; //break wewnątrz switcha nie "propaguje" do while, więc nie przerywa pętli
+                }
+
+                //if (stop)
+                //    break; //break przerywa pętlę
+            }
+
+
+            bool finish;
+
+            //do-while - sprawdza warunek po wykonaniu ciała - zapewnia, że zostanie ono wykonane co najmniej raz
+            //pozwala to wyeliminować inicjalizację zminnych przed wejściem do pętli
+            do
+            {
+                Console.WriteLine("Co chcesz zrobić?");
+                string operation = Console.ReadLine();
+                switch (operation)
+                {
+                    case "exit":
+                        finish = true;
+                        break;
+                    default:
+                        finish = false;
+                        Console.WriteLine(operation);
+                        break;
+                }
+            } while (!finish);
+
+
+
+
+            int userValue1 = RequestForInt();
+
+            Console.WriteLine($"{userValue1} to poprawna wartość!");
+
+            int userValue2 = RequestForInt();
+
+            Console.WriteLine($"{userValue2} to poprawna wartość!");
+        }
+
+
+        public int RequestForInt()
+        {
+            bool success;
+            int userValue;
+            string userInput;
+            do
+            {
+                Console.WriteLine("Podaj cyfrę:");
+                userInput = Console.ReadLine();
+            } while (!int.TryParse(userInput, out userValue));
+
+            return userValue; //return służy do przerwania funkcji i zwrócenia wskazanej wartości jako wynik działania funkcji
+        }
     }
 }
