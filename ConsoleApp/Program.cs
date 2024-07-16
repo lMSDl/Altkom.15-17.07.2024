@@ -1,8 +1,14 @@
 ﻿using ConsoleApp;
 using System.Globalization;
 
-/*StringsDemo myStringsDemo = new StringsDemo();
-myStringsDemo.Run();*/
+Demos demos = new Demos();
+//demos.Strings();
+//demos.NumbersFormatting();
+
+//Console.ReadLine();
+
+
+
 
 
 int a = 11;

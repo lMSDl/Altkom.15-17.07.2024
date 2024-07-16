@@ -1,8 +1,8 @@
 ﻿namespace ConsoleApp
 {
-    internal class StringsDemo
+    internal class Demos
     {
-        public void Run()
+        public void Strings()
         {
             //wywołanie funkcji statycznej z klasy Console z parametrem typu string
             Console.WriteLine("Hello, World!");
@@ -100,6 +100,37 @@
 
             //usuwanie wskazanego znaku przez sparametryzowanie metody wskazanym znakiem
             Console.WriteLine($"*{name.Trim().Trim('ł')}*");
+        }
+
+        public void NumbersFormatting()
+        {
+            string strSec, outStr;
+            int nSec, nDays, nMins, nHours;
+
+            Console.WriteLine("Podaj ilość sekund");
+
+            strSec = Console.ReadLine();
+            nSec = int.Parse(strSec);
+
+            Console.WriteLine(nSec);
+
+            nDays = nSec / (24 * 60 * 60);
+            nHours = (nSec - nDays * 24 * 60 * 60) / (60 * 60);
+            nMins = (nSec - nDays * 24 * 60 * 60 - nHours * 60 * 60) / 60;
+            nSec = (nSec - nDays * 24 * 60 * 60 - nHours * 60 * 60 - nMins * 60);
+
+            Console.WriteLine($"Dni:{nDays}");
+            Console.WriteLine($"Godziny:{nHours}");
+            Console.WriteLine($"Min:{nMins}");
+            Console.WriteLine($"Sec:{nSec}");
+
+            Console.WriteLine("Sekundy po przeliczeniu na format D.HH:MM:SS");
+            outStr = String.Format("{0:0#}.{1:0#}:{2:0#}:{3:0#}", nDays, nHours, nMins, nSec);
+            Console.WriteLine(outStr);
+            outStr = $"{nDays:0#}.{nHours:0#}:{nMins:0#}:{nSec:0#}";
+            Console.WriteLine(outStr);
+            outStr = nDays.ToString("#") + "." + nHours.ToString("0#:") + nMins.ToString("0#:") + nSec.ToString("0#");
+            Console.WriteLine(outStr);
         }
     }
 }
