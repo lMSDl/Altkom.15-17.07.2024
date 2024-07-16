@@ -11,82 +11,59 @@ Demos demos = new Demos();
 //Console.ReadLine();
 
 
+bool stop = false;
 
-Console.WriteLine("Podaj bok kwadratu:");
-string input = Console.ReadLine();
-
-int side;
-bool parseSuccess = int.TryParse(input, out side);
-
-if (!parseSuccess)
+//while - pętla która trwa gdy jej parametr jest true, parametr jest sprawdzany przed każdym wejściem do pętli
+// jeśli przy pierwszym wejściu parametr będzie false, to pętla się nigdy nie wykona
+while (!stop)
+//while(true) //= pętla nieskończona
 {
-    Console.WriteLine("Błędna wartość!");
-}
-else
-{
+    Console.Clear();
+    Console.WriteLine("1. Stringi; 2. Liczby; 3. Formatowanie");
+    Console.WriteLine("Co chcesz zrobić?");
+    string input = Console.ReadLine();
 
-    //switch - przyjmuje parametr, kóry jest porównywany z listą przypadków (case)
-    switch (side)
+    switch(input)
     {
-        //case - rozpatrywany przypadek
-        //wiele case'ow może być przypisanych do tego samego kodu
-        case < 0:
-            //kod wykonywany jest od case do break - nie ma potrzeby stosowaniea klamerek {}
-            //case musi kończyć się instrukją break - przerywająca wykonywanie swticha
-            Console.WriteLine("Nie mogę policzyć obwodu z ujemnego rozmiaru");
+        case "1":
+            demos.Strings();
             break;
-        case > 0:
-            Console.WriteLine($"Kwadrat ma obwód {side * 4}");
+        case "2":
+            demos.Numbers();
             break;
-        //default - odpowiedniek else, czyli wykonanie kodu, jeśli nie znaleziono odpowiedniego case
+        case "3":
+            demos.NumbersFormatting();
+            break;
+        case "exit":
+
+            stop = true;
+            break;
         default:
-            Console.WriteLine("Kwadrat nie instnieje");
-            break;
+            Console.WriteLine("Brak wskazanej opcji");
+            break; //break wewnątrz switcha nie "propaguje" do while, więc nie przerywa pętli
     }
+
+    //if (stop)
+    //    break; //break przerywa pętlę
 }
 
 
+bool finish;
 
-Console.WriteLine("podaj wartość A:");
-string a = Console.ReadLine();
-Console.WriteLine("podaj wartość B:");
-string b = Console.ReadLine();
-
-float valueA, valueB;
-
-if (!(float.TryParse(a, out valueA) && float.TryParse(b, out valueB)))
+//do-while - sprawdza warunek po wykonaniu ciała - zapewnia, że zostanie ono wykonane co najmniej raz
+//pozwala to wyeliminować inicjalizację zminnych przed wejściem do pętli
+do
 {
-    Console.WriteLine("Błędne dane!");
-}
-else
-{
-
-    Console.WriteLine("Wprowadź znak operacji:");
+    Console.WriteLine("Co chcesz zrobić?");
     string operation = Console.ReadLine();
-
-    float result;
-
     switch (operation)
     {
-        case "+":
-            result = valueA + valueB;
-            break;
-        case "-":
-            result = valueA - valueB;
-            break;
-        case "*":
-            result = valueA * valueB;
-            break;
-        case "/":
-            result = valueA / valueB;
-            break;
-        case "^":
-            result = (float)Math.Pow(valueA, valueB);
+        case "exit":
+            finish = true;
             break;
         default:
-            Console.WriteLine("Nieznana operacja!");
-            return; //przerywa wykonywanie funkcji
+            finish = false;
+            Console.WriteLine(operation);
+            break;
     }
-
-    Console.WriteLine($"{valueA} {operation} {valueB} = {result}");
-}
+} while (!finish);
