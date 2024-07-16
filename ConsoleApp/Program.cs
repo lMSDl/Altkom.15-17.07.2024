@@ -56,3 +56,13 @@ sides[1] = float.Parse(inputs[1]);
 
 float area = sides[0] * sides[1];
 Console.WriteLine($"Pole prostokąta to {area}");
+
+Console.WriteLine("Napisz coś:");
+string input = Console.ReadLine();
+//tablica zwracana jako rezultat wywołania metody
+//metoda split dzieli string na części wg wskazanego separatora
+
+//string[] words = input.Split(" ");
+string[] words = input.Split(); //bez parametru, działa jak powyżej
+
+Console.WriteLine($"Napisałeś {words.Length} słów. Pierwsze słowo: {words[0]}, ostatnie: {words[words.Length - 1]}");
