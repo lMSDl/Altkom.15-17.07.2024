@@ -83,15 +83,12 @@ int RequestForInt()
 {
     bool success;
     int userValue;
+    string userInput;
     do
     {
         Console.WriteLine("Podaj cyfrę:");
-        string userInput = Console.ReadLine();
-
-        success = int.TryParse(userInput, out userValue);
-        if (!success)
-            Console.WriteLine("Błędne dane!");
-    } while (!success);
+        userInput = Console.ReadLine();
+    } while (!int.TryParse(userInput, out userValue));
 
     return userValue; //return służy do przerwania funkcji i zwrócenia wskazanej wartości jako wynik działania funkcji
 }
