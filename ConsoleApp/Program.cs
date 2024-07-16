@@ -110,3 +110,30 @@ float sideB = float.Parse(input2);
 
 float area = sideA * sideB;
 Console.WriteLine($"Pole prostokąta to {area}");
+
+
+
+
+int intValue = 5;
+long longValue = intValue;
+
+Console.WriteLine(longValue);
+
+//rzutowanie - chcąc przypisać wartość o wyższej prezycji do zmiennej o niższej precyzji musimy zastosować rzutowanie
+intValue = (int)longValue;
+Console.WriteLine(intValue);
+
+//longValue = 927623451892634198L;
+longValue = 2147483647 + 1L;
+Console.WriteLine(longValue);
+
+intValue = (int)longValue;
+Console.WriteLine(intValue);
+
+
+float floatValue = 4.5f;
+double doubleValue = floatValue;
+Console.WriteLine(doubleValue);
+doubleValue = 0.33333333333333;
+floatValue = (float)doubleValue;
+Console.WriteLine(floatValue);
