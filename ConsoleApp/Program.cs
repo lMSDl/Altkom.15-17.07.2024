@@ -67,3 +67,31 @@ do
             break;
     }
 } while (!finish);
+
+
+
+
+int userValue1 = RequestForInt();
+
+Console.WriteLine($"{userValue1} to poprawna wartość!");
+
+int userValue2 = RequestForInt();
+
+Console.WriteLine($"{userValue2} to poprawna wartość!");
+
+int RequestForInt()
+{
+    bool success;
+    int userValue;
+    do
+    {
+        Console.WriteLine("Podaj cyfrę:");
+        string userInput = Console.ReadLine();
+
+        success = int.TryParse(userInput, out userValue);
+        if (!success)
+            Console.WriteLine("Błędne dane!");
+    } while (!success);
+
+    return userValue; //return służy do przerwania funkcji i zwrócenia wskazanej wartości jako wynik działania funkcji
+}
