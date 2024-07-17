@@ -18,4 +18,6 @@ Console.WriteLine(typeof(Person).Namespace);
 Console.WriteLine(typeof(Person).FullName);
 
 Person person = new Person();
+person.SetName("     ala      ");
+Console.WriteLine(person.GetName());
 
