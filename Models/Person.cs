@@ -17,22 +17,22 @@ namespace Models/*;*/ //namespace może być ograniczony za pomocą klamerek lub
         //private - oznacza dostęp tylko dla elementów danej klasy (inne dostępne: public/internal/protected)
         //brak modyfikatora -> private
         //pola zazwyczaj są prywatne ze względu na hermetyzację, a dostęp realizowany jest przez metody dostępowe (getter i setter)
-        private string name;
-
+        private string _name;
+        
         //getter służy do pobrania wartości pola - metoda zwraca typ zgodny z typem pola
         //nazwa zwyczajowa składa się z Get + nazwa pola
         //string - metoda zwraca string
         public string GetName()
         {
             //instukcja zwracająca wynik działania metody - obowiązkowy gdy zadeklarowaliśmy, że klasa coś zwraca (jest inna niż void)
-            return name;
+            return _name;
         }
 
         //setter - do ustawiania wartości pola - metoda przyjmuje parametr, który zostaje wpisany w odpowiednie pole (można dodać kod "obróbki danych")
         //void - metoda nic nie zwaraca
         public void SetName(string value)
         {
-            name = value.Trim();
+            _name = value.Trim();
         }
 
         //Property - właściwość
@@ -57,6 +57,27 @@ namespace Models/*;*/ //namespace może być ograniczony za pomocą klamerek lub
             {
                 age = value;
             }
+        }
+
+        //<modyfikator dostępu> <typ zwracany> <nazwa metody>()
+        public string GenerateBio()
+        {
+            string bio = $"{_name} {LastName}, wiek {Age} lat";
+            return bio;
+        }
+
+        public void ChangeNamesToTitleCase()
+        {
+            //_name = $"{_name.ToUpper()[0]}{_name.Substring(1).ToLower()}";
+            //LastName = $"{LastName.ToUpper()[0]}{LastName.Substring(1).ToLower()}";
+            _name = ToTitleCase(_name);
+            LastName = ToTitleCase(LastName);
+        }
+
+        //prywatna metoda pomocnicza powstała by uniknąć powtarzającego się kodu 
+        private string ToTitleCase(string input)
+        {
+            return input[0].ToString().ToUpper() + input.Substring(1).ToLower();
         }
     }
 

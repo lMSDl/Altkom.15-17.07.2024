@@ -21,8 +21,14 @@ Person person = new Person();
 person.SetName("     ala      ");
 Console.WriteLine(person.GetName());
 
-person.LastName = "Alowska";
+person.LastName = "AloWska";
 Console.WriteLine(person.LastName);
 
 person.Age = 30;
+
+Console.WriteLine(person.GenerateBio());
+person.ChangeNamesToTitleCase();
+Console.WriteLine(person.GenerateBio());
+
+
 
