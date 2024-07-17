@@ -21,3 +21,8 @@ Person person = new Person();
 person.SetName("     ala      ");
 Console.WriteLine(person.GetName());
 
+person.LastName = "Alowska";
+Console.WriteLine(person.LastName);
+
+person.Age = 30;
+
