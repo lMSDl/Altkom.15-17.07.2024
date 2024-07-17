@@ -32,7 +32,30 @@ person.ChangeNamesToTitleCase();
 Console.WriteLine(person.GenerateBio());
 
 
-Person person2 = new Person();
 
 
+Console.WriteLine("-----");
 
+
+/* Tworzenie pierwszego autora "Jan Nowak" */
+Person person1 = new Person("Jan");
+person1.LastName = "Nowak";
+
+/* Tworzenie drugiego autora "Jan Nowak" */
+Person person2 = new Person("Kamil");
+person2.LastName = "Kowalski";
+
+/* Tworzenie pierwszej książki */
+Book book1 = new Book("Grunwald", person1);
+
+/* Tworzenie drugiej książki */
+Book book2 = new Book("Miś uszatek", person1);
+
+/* Tworzenie trzeciej książki */
+Book book3 = new Book("Muninki", person2);
+
+Library library = new Library();
+library.Add(book1);
+library.Add(book2);
+library.Add(book3);
+library.ShowBooks();
