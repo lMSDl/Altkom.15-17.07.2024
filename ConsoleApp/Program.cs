@@ -59,3 +59,21 @@ library.Add(book1);
 library.Add(book2);
 library.Add(book3);
 library.ShowBooks();
+
+
+Console.WriteLine("-----");
+
+Car car = new Car("Skoda", "Octavia", 2022);
+
+Console.WriteLine(car.GetInformations());
+car.Fuel(0.5f);
+Console.WriteLine(car.GetInformations());
+car.Fuel(0.6f);
+Console.WriteLine(car.GetInformations());
+car.Drive(100);
+Console.WriteLine(car.GetInformations());
+car.Drive(623);
+Console.WriteLine(car.GetInformations());
+car.Drive(500);
+Console.WriteLine(car.GetInformations());
+
