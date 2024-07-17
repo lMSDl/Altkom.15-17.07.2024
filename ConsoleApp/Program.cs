@@ -17,7 +17,8 @@ Console.WriteLine(typeof(Person).Name);
 Console.WriteLine(typeof(Person).Namespace);
 Console.WriteLine(typeof(Person).FullName);
 
-Person person = new Person();
+Person person = new Person("Zenon", "Zenowski", 80);
+Console.WriteLine(person.GenerateBio());
 person.SetName("     ala      ");
 Console.WriteLine(person.GetName());
 
@@ -29,6 +30,9 @@ person.Age = 30;
 Console.WriteLine(person.GenerateBio());
 person.ChangeNamesToTitleCase();
 Console.WriteLine(person.GenerateBio());
+
+
+Person person2 = new Person();
 
 
 
